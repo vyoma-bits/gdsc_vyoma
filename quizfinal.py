@@ -1,4 +1,38 @@
 
+class Operation:
+    
+    def __init__(self, questions):
+        self.questions = questions
+        self.marks =0
+
+    
+    def start(self):
+        for question in self.questions:
+            question.Display()
+           
+            answer = input("Enter your answer (True/False): ")
+            if self.check_answer(question, answer):
+                
+                
+                self.marks += 2
+                print("correct",self.check_answer(question, answer))
+                
+                
+            else:
+                
+                self.marks-=1
+                
+            print()
+       
+        print("You marksd " + str(self.marks) + " out of " + str(len(self.questions)*2))
+
+   
+    def check_answer(self, question, answer):
+        
+        correct_answer = question.text[0:4:]
+        if correct_answer=="Fals":
+            correct_answer="False"
+        return answer==correct_answer
 class Question_set:
    
     def __init__(self, text, choice_1, choice_2):
@@ -12,41 +46,6 @@ class Question_set:
         print("A. " + self.choice_1)
         print("B. " + self.choice_2)
         
-
-class Operation:
-    
-    def __init__(self, questions):
-        self.questions = questions
-        self.score =0
-
-    
-    def start(self):
-        for question in self.questions:
-            question.Display()
-           
-            answer = input("Enter your answer (True/False): ")
-            if self.check_answer(question, answer):
-                
-                
-                self.score += 2
-                print("correct",self.check_answer(question, answer))
-                
-                
-            else:
-                
-                self.score-=1
-                
-            print()
-       
-        print("You scored " + str(self.score) + " out of " + str(len(self.questions)*2))
-
-   
-    def check_answer(self, question, answer):
-        
-        correct_answer = question.text[0:4:]
-        if correct_answer=="Fals":
-            correct_answer="False"
-        return answer==correct_answer
      
         
 question_data =[
